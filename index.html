@@ -2,142 +2,205 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+
+  <!-- Tittel som vises i fanen i nettleseren -->
   <title>BetterWay</title>
+
+  <!-- Gjør siden responsiv på mobil og nettbrett -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
+    /* Generell stil for hele nettsiden */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       background: #f8f9fa;
       color: #333;
     }
+
+    /* Toppseksjon med bakgrunnsbilde og grønn overlay */
     header {
-  background: linear-gradient(rgba(15,118,110,0.7), rgba(15,118,110,0.7)),
-              url("https://images.unsplash.com/photo-1544620347-c4fd4a3d5957");
-  background-size: cover;
-  background-position: center;
-  color: white;
-  padding: 100px 20px;
-  text-align: center;
-}
+      background: linear-gradient(rgba(15,118,110,0.7), rgba(15,118,110,0.7)),
+                  url("https://images.unsplash.com/photo-1544620347-c4fd4a3d5957");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    /* Stil for hver seksjon på siden */
     section {
       padding: 50px 20px;
       max-width: 900px;
       margin: auto;
     }
+
+    /* Overskrifter nivå 2 */
     h2 {
       color: #0f766e;
     }
+
+    /* Knapper */
     .btn {
+      display: inline-block;
       background: #0f766e;
       color: white;
       padding: 12px 20px;
       text-decoration: none;
       border-radius: 8px;
+      margin-top: 10px;
     }
+
+    /* Sentrerer tekst i seksjoner som bruker denne klassen */
+    .center {
+      text-align: center;
+    }
+
+    /* Footer nederst på siden */
     .footer {
-  background: #0f766e;
-  color: white;
-  padding: 40px 20px 20px;
-}
+      background: #0f766e;
+      color: white;
+      padding: 40px 20px 20px;
+      margin-top: 40px;
+    }
+
+    /* Innholdet i footeren deles i to kolonner */
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      max-width: 900px;
+      margin: auto;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    /* Venstre og høyre del av footer */
+    .footer-left,
+    .footer-right {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    /* Logo i footer */
+    .logo {
+      width: 120px; /* Passelig størrelse */
+      margin-top: 10px;
+      display: block;
+    }
+
+    /* Nederste linje i footer */
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 14px;
+      opacity: 0.9;
+    }
   </style>
 </head>
 
 <body>
 
-<header>
-  <h1>BetterWay</h1>
-  <p>planlegg din reise. Improve your day.</p>
-  <a href="#solution" class="btn">Explore the solution</a>
-</header>
-  
+  <!-- Toppdel av siden -->
+  <header>
+    <h1>BetterWay</h1>
+    <p>Planlegg din reise. Improve your day.</p>
 
-    
-<section>
-  <h2>The Challenge</h2>
-  <p>
-    Public transport in Trondheim can be overcrowded and unpredictable.
-    This creates challenges for people with anxiety, reduced mobility,
-    or anyone who wants a smoother daily routine.
-  </p>
-</section>
-  
- <section class="center"> 
-  <h2>Problemstillingen til oppgaven</h2>
-  <p>
-    Det er et økende problem med busskapasitet i Trondheim. Busselskapene sliter med å opprettholde tilstrekkelig kapasitet i rushtiden, noe som fører til fulle busser og lange ventetider. Trondheim er en studentby, og mange studenter er helt avhengige av et velfungerende kollektivtilbud. Et stabilt og effektivt kollektivtilbud er derfor viktig for at hverdagen til studentene skal fungere. For personer med fysiske og psykiske vansker kan rushtiden være svært utfordrende. Når bussene er fulle i rushtiden, kan dette gjøre kollektivtransport mindre tilgjengelig og mer belastende for disse gruppene. I denne rapporten skal vi se på hvordan vi kan løse disse problemene ved hjelp av en digital tvilling.
-  <p>
- </section>
-  
-    
-<section id="solution">
-  <h2>Our Solution</h2>
-  <p>
-    BetterWay helps users plan their journeys with real-time information
-    about bus crowding, accessibility, and travel conditions.
-  </p>
-</section>
+    <!-- Knapp som hopper ned til seksjonen "Our Solution" -->
+    <a href="#solution" class="btn">Explore the solution</a>
+  </header>
 
-<section>
-  <h2>Key Features</h2>
-  <ul>
-    <li>Real-time bus crowding</li>
-    <li>Accessibility information</li>
-    <li>Smart journey planning</li>
-    <li>More predictable travel</li>
-  </ul>
-</section>
+  <!-- Seksjon som beskriver utfordringen -->
+  <section>
+    <h2>The Challenge</h2>
+    <p>
+      Public transport in Trondheim can be overcrowded and unpredictable.
+      This creates challenges for people with anxiety, reduced mobility,
+      or anyone who wants a smoother daily routine.
+    </p>
+  </section>
 
-<section>
-  <h2>Who It Helps</h2>
-  <p>
-    Designed for everyone — especially people with everyday challenges,
-    students, and commuters.
-  </p>
-</section>
+  <!-- Seksjon med problemstilling -->
+  <section class="center">
+    <h2>Problemstillingen til oppgaven</h2>
+    <p>
+      Det er et økende problem med busskapasitet i Trondheim. Busselskapene sliter med å opprettholde tilstrekkelig kapasitet i rushtiden, noe som fører til fulle busser og lange ventetider. Trondheim er en studentby, og mange studenter er helt avhengige av et velfungerende kollektivtilbud. Et stabilt og effektivt kollektivtilbud er derfor viktig for at hverdagen til studentene skal fungere. For personer med fysiske og psykiske vansker kan rushtiden være svært utfordrende. Når bussene er fulle i rushtiden, kan dette gjøre kollektivtransport mindre tilgjengelig og mer belastende for disse gruppene. I denne rapporten skal vi se på hvordan vi kan løse disse problemene ved hjelp av en digital tvilling.
+    </p>
+  </section>
 
-<section>
-  <h2>Impact & Vision</h2>
-  <p>
-    Our goal is to make public transport more inclusive, predictable,
-    and user-friendly.
-  </p>
-</section>
-  
-<a href="side2.html" class="btn">Gå til side 2</a>
-% fotnote for nettsiden 
-  src="images/logo.png"
-<footer class="footer">
-  <div class="footer-content">
-    
+  <!-- Seksjon med løsning -->
+  <section id="solution">
+    <h2>Our Solution</h2>
+    <p>
+      BetterWay helps users plan their journeys with real-time information
+      about bus crowding, accessibility, and travel conditions.
+    </p>
+  </section>
 
-    <div class="footer-left">
-      <h3>BetterWay</h3>
-      <p>Planlegg din reise enklere.</p>
-      <img src="logo.png.png" alt="BetterWay logo" class="logo">
-      <img src="logo.png.png">
-      .footer-logo {
-  width: 120px;
-  margin-top: 10px;
-  filter: brightness(0) invert(1);
-}
+  <!-- Liste over funksjoner -->
+  <section>
+    <h2>Key Features</h2>
+    <ul>
+      <li>Real-time bus crowding</li>
+      <li>Accessibility information</li>
+      <li>Smart journey planning</li>
+      <li>More predictable travel</li>
+    </ul>
+  </section>
+
+  <!-- Hvem løsningen hjelper -->
+  <section>
+    <h2>Who It Helps</h2>
+    <p>
+      Designed for everyone — especially people with everyday challenges,
+      students, and commuters.
+    </p>
+  </section>
+
+  <!-- Visjon og mål -->
+  <section>
+    <h2>Impact & Vision</h2>
+    <p>
+      Our goal is to make public transport more inclusive, predictable,
+      and user-friendly.
+    </p>
+
+    <!-- Knapp til side 2 -->
+    <a href="side2.html" class="btn">Gå til side 2</a>
+  </section>
+
+  <!-- Footer nederst -->
+  <footer class="footer">
+    <div class="footer-content">
+
+      <!-- Venstre side i footer -->
+      <div class="footer-left">
+        <h3>BetterWay</h3>
+        <p>Planlegg din reise enklere.</p>
+
+        <!-- LOGO:
+             Hvis logoen ligger i samme mappe som index.html, bruk src="logo.png"
+             Hvis den ligger i en mappe som heter images, bruk src="images/logo.png"
+        -->
+        <img src="images/logo.png" alt="BetterWay logo" class="logo">
+      </div>
+
+      <!-- Høyre side i footer -->
+      <div class="footer-right">
+        <h4>Kontakt oss</h4>
+        <p>Email: betterway@ntnu.no</p>
+        <p>Telefon: +47 123 45 678</p>
+        <p>Trondheim, Norge</p>
+      </div>
+
     </div>
 
-    <div class="footer-right">
-      <h4>Kontakt oss</h4>
-      <p>Email: betterway@ntnu.no</p>
-      <p>Telefon: +47 123 45 678</p>
-      <p>Trondheim, Norge</p>
+    <!-- Nederste tekstlinje -->
+    <div class="footer-bottom">
+      <p>© 2026 BetterWay – Studentprosjekt NTNU</p>
     </div>
-
-  </div>
-
-  <div class="footer-bottom">
-    <p>© 2026 BetterWay – Studentprosjekt NTNU</p>
-  </div>
- 
-</footer>
+  </footer>
 
 </body>
 </html>
-
