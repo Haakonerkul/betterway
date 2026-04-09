@@ -18,6 +18,40 @@
       color: #333;
     }
 
+    /* NAVBAR */
+.navbar {
+  background: white;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+.logo-text {
+  color: #0f766e;
+  margin: 0;
+}
+
+.nav-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: #0f766e;
+}
+
     /* Toppseksjon med bakgrunnsbilde og grønn overlay */
     header {
       background: linear-gradient(rgba(15,118,110,0.7), rgba(15,118,110,0.7)),
@@ -101,7 +135,23 @@
 </head>
 
 <body>
+  
+<!-- Navigasjonsmeny -->
+<nav class="navbar">
+  <div class="nav-container">
+    <h2 class="logo-text">BetterWay</h2>
 
+    <div class="nav-links">
+      <a href="#about">Om oss</a>
+      <a href="#problem">Problem</a>
+      <a href="#solution">Løsning</a>
+      <a href="#features">Tjenester</a>
+      <a href="#who">Hvem</a>
+      <a href="#contact">Kontakt</a>
+    </div>
+  </div>
+</nav>
+  
   <!-- Toppdel av siden -->
   <header>
     <h1>BetterWay</h1>
@@ -112,8 +162,8 @@
   </header>
 
   <!-- Seksjon som beskriver utfordringen -->
-  <section>
-    <h2>The Challenge</h2>
+  <section id="about">
+  <h2>The Challenge</h2>
     <p>
       Public transport in Trondheim can be overcrowded and unpredictable.
       This creates challenges for people with anxiety, reduced mobility,
@@ -122,7 +172,7 @@
   </section>
 
   <!-- Seksjon med problemstilling -->
-  <section class="center">
+  <section id="problem" class="center">
     <h2>Problemstillingen til oppgaven</h2>
     <p>
       Det er et økende problem med busskapasitet i Trondheim. Busselskapene sliter med å opprettholde tilstrekkelig kapasitet i rushtiden, noe som fører til fulle busser og lange ventetider. Trondheim er en studentby, og mange studenter er helt avhengige av et velfungerende kollektivtilbud. Et stabilt og effektivt kollektivtilbud er derfor viktig for at hverdagen til studentene skal fungere. For personer med fysiske og psykiske vansker kan rushtiden være svært utfordrende. Når bussene er fulle i rushtiden, kan dette gjøre kollektivtransport mindre tilgjengelig og mer belastende for disse gruppene. I denne rapporten skal vi se på hvordan vi kan løse disse problemene ved hjelp av en digital tvilling.
@@ -139,7 +189,7 @@
   </section>
 
   <!-- Liste over funksjoner -->
-  <section>
+  <section id="features">
     <h2>Key Features</h2>
     <ul>
       <li>Real-time bus crowding</li>
@@ -150,7 +200,7 @@
   </section>
 
   <!-- Hvem løsningen hjelper -->
-  <section>
+ <section id="who">
     <h2>Who It Helps</h2>
     <p>
       Designed for everyone — especially people with everyday challenges,
@@ -171,7 +221,7 @@
   </section>
 
   <!-- Footer nederst -->
-  <footer class="footer">
+ <footer class="footer" id="contact">
     <div class="footer-content">
 
       <!-- Venstre side i footer -->
