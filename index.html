@@ -210,6 +210,28 @@ button {
   </style>
 </head>
 
+  
+<script>
+function visMelding(farge) {
+  const boks = document.getElementById("meldingBoks");
+
+  if (farge === "green") {
+    boks.innerHTML = "God plass";
+    boks.style.background = "#bbf7d0";
+  }
+
+  if (farge === "yellow") {
+    boks.innerHTML = "Middels plass";
+    boks.style.background = "#fef9c3";
+  }
+
+  if (farge === "red") {
+    boks.innerHTML = "Dårlig plass";
+    boks.style.background = "#fecaca";
+  }
+}
+</script>
+  
 <body>
   
 <!-- Navigasjonsmeny -->
