@@ -90,35 +90,31 @@
 
     
     /* Prosjektoversikt (bobler) */
+/* Container – sørger for at de ligger på rad */
 .container {
   display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
+  justify-content: flex-start; /* starter fra venstre */
+  gap: 20px;
+  flex-wrap: nowrap; /* IKKE gå ned på ny linje */
+  overflow-x: auto; /* gjør at det funker på små skjermer */
+  padding: 10px 0;
 }
 
+/* Kortene */
 .boble {
-  width: 280px;
-  background: #e6f4f1; /* lys grønn bakgrunn */
-  border-radius: 15px; /* runde kanter */
+  min-width: 250px; /* viktig for layout */
+  height: 200px; /* lavere høyde = mer rektangel */
+  background: #e6f4f1;
+  border-radius: 15px;
   padding: 20px;
   box-shadow: 0 6px 15px rgba(0,0,0,0.1);
   text-align: left;
+  flex-shrink: 0; /* hindrer at de klemmes */
   transition: transform 0.3s;
 }
 
 .boble:hover {
   transform: translateY(-5px);
-}
-
-.boble h2 {
-  color: #0f766e;
-  margin-bottom: 10px;
-}
-
-.boble p {
-  font-size: 14px;
-  color: #333;
 }
 
     
