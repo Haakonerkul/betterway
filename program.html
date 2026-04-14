@@ -385,11 +385,12 @@
         </div>
 
         <div class="controls">
-          <button onclick="nextStop()">Neste stopp</button>
-          <button onclick="startAuto()">Start simulering</button>
-          <button onclick="stopAuto()">Stopp simulering</button>
-          <button onclick="resetBus()">Start på nytt</button>
-        </div>
+  <button onclick="nextStop()">Neste stopp</button>
+  <button onclick="startAuto()">Start simulering</button>
+  <button onclick="startMorningRush()">Start morgenrush</button>
+  <button onclick="stopAuto()">Stopp simulering</button>
+  <button onclick="resetBus()">Start på nytt</button>
+</div>
 
         <div class="log" id="logBox">
           Bussen er klar til å starte simuleringen.
@@ -404,7 +405,15 @@
   </main>
 
   <script>
-  function toggleMenu() {
+
+    
+ function startMorningRush() {
+  if (autoInterval) return;
+  autoInterval = setInterval(nextMorningRushStop, 2000);
+}
+
+    
+ function toggleMenu() {
     document.getElementById("sidebar").classList.toggle("open");
     document.getElementById("overlay").classList.toggle("show");
   }
@@ -531,6 +540,74 @@
     return { onCount, offCount };
   }
 
+    
+function getMorningRushFlow(index, currentPassengers) {
+  const stopName = stops[index];
+  const lastIndex = stops.length - 1;
+
+  let onMin = 0, onMax = 0, offMin = 0, offMax = 0;
+
+  // Startstopp (starter tom)
+  if (index === 0) {
+    onMin = 6; onMax = 12;
+    offMin = 0; offMax = 0;
+  }
+
+  // Tidlig rute (folk går på)
+  else if (index >= 1 && index <= 6) {
+    onMin = 4; onMax = 10;
+    offMin = 0; offMax = 2;
+  }
+
+  // Studentområder = mye på
+  else if (
+    stopName === "Moholt studentby" ||
+    stopName === "Voll studentby" ||
+    stopName === "Gløshaugen" ||
+    stopName === "Høgskoleringen"
+  ) {
+    onMin = 10; onMax = 20;
+    offMin = 1; offMax = 4;
+  }
+
+  // Sentrum = mange av
+  else if (
+    stopName === "Prinsens gate" ||
+    stopName === "Kongens gate" ||
+    stopName === "Torvet"
+  ) {
+    onMin = 1; onMax = 4;
+    offMin = 10; offMax = 20;
+  }
+
+  // Slutten = bussen tømmes
+  else if (index >= lastIndex - 3) {
+    onMin = 0; onMax = 2;
+    offMin = 5; offMax = 15;
+  }
+
+  // Endestopp = alle av
+  if (index === lastIndex) {
+    return {
+      onCount: 0,
+      offCount: currentPassengers
+    };
+  }
+
+  let offCount = Math.min(
+    Math.floor(Math.random() * (offMax - offMin + 1)) + offMin,
+    currentPassengers
+  );
+
+  let onCount = Math.min(
+    Math.floor(Math.random() * (onMax - onMin + 1)) + onMin,
+    100 - (currentPassengers - offCount)
+  );
+
+  return { onCount, offCount };
+}
+
+    
   function renderStops() {
     const list = document.getElementById("stopsList");
     list.innerHTML = "";
@@ -589,6 +666,7 @@
   }
 
   function nextStop() {
+    
     const flow = getStopFlow(currentIndex, passengers);
 
     passengers -= flow.offCount;
@@ -605,6 +683,24 @@
       passengers = 0; // ny tur starter tom
     }
   }
+
+    function nextMorningRushStop() {
+  const flow = getMorningRushFlow(currentIndex, passengers);
+
+  passengers -= flow.offCount;
+  passengers += flow.onCount;
+
+  if (passengers < 0) passengers = 0;
+  if (passengers > 100) passengers = 100;
+
+  updateUI(flow.onCount, flow.offCount);
+
+  currentIndex++;
+  if (currentIndex >= stops.length) {
+    currentIndex = 0;
+    passengers = 0;
+  }
+}
 
   function startAuto() {
     if (autoInterval) return;
@@ -627,5 +723,6 @@
 
   updateUI(0, 0);
 </script>
+  
 </body>
 </html>
