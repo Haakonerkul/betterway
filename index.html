@@ -86,6 +86,46 @@
       margin-top: 10px;
     }
 
+
+
+    
+    /* Prosjektoversikt (bobler) */
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.boble {
+  width: 250px;
+  height: 250px;
+  background-color: #0f766e; /* matcher designet ditt */
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+  text-align: center;
+}
+
+.boble:hover {
+  transform: scale(1.05);
+}
+
+.boble h2 {
+  margin-bottom: 10px;
+}
+
+.boble p {
+  font-size: 14px;
+}
+
+    
     /* Sentrerer tekst i seksjoner som bruker denne klassen */
     .center {
       text-align: center;
@@ -179,6 +219,39 @@
     </p>
   </section>
 
+  <!--- Bobbler Probelmstilling --> 
+  
+<section>
+  <h2 style="text-align:center;">Prosjektoversikt</h2>
+
+  <div class="container">
+
+    <div class="boble">
+      <h2>Problemstilling</h2>
+      <p>
+        Hvordan kan vi bruke digital teknologi til å forbedre bussopplevelsen i Trondheim?
+      </p>
+    </div>
+
+    <div class="boble">
+      <h2>Målgruppe</h2>
+      <p>
+        Studenter, eldre og personer med utfordringer i hverdagen.
+      </p>
+    </div>
+
+    <div class="boble">
+      <h2>Resultat</h2>
+      <p>
+        En løsning som hjelper brukere med å planlegge bussreiser bedre.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+  
   <!-- Seksjon med løsning -->
   <section id="solution">
     <h2>Our Solution</h2>
