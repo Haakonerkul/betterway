@@ -93,29 +93,44 @@
 /* Container – sørger for at de ligger på rad */
 .container {
   display: flex;
-  justify-content: flex-start; /* starter fra venstre */
+  justify-content: space-between; /* fordeler jevnt */
   gap: 20px;
-  flex-wrap: nowrap; /* IKKE gå ned på ny linje */
-  overflow-x: auto; /* gjør at det funker på små skjermer */
-  padding: 10px 0;
+  max-width: 900px;
+  margin: auto;
 }
 
 /* Kortene */
 .boble {
-  min-width: 250px; /* viktig for layout */
-  height: 200px; /* lavere høyde = mer rektangel */
+  flex: 1; /* gjør at alle blir like store */
+  max-width: 280px;
+
+  height: 320px; /* høyere enn bred = kortsiden opp */
   background: #e6f4f1;
   border-radius: 15px;
   padding: 20px;
+
   box-shadow: 0 6px 15px rgba(0,0,0,0.1);
   text-align: left;
-  flex-shrink: 0; /* hindrer at de klemmes */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   transition: transform 0.3s;
 }
 
 .boble:hover {
   transform: translateY(-5px);
 }
+
+.boble h2 {
+  color: #0f766e;
+}
+
+.boble p {
+  font-size: 14px;
+}
+    
 
     
     /* Sentrerer tekst i seksjoner som bruker denne klassen */
