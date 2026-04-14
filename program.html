@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BetterWay – Oversikt</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      color: #333;
+    }
+
+    /* TOPPBAR */
+    .topbar {
+      height: 80px;
+      background: #0f766e;
+      color: white;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: center;
+      padding: 0 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .topbar-left {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .topbar-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .topbar-right {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .menu-btn {
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    .logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: white;
+      padding: 4px;
+    }
+
+    .brand-name {
+      margin: 0;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .back-btn {
+      background: white;
+      color: #0f766e;
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    /* SIDEMENY */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 260px;
+      height: 100%;
+      background: #0b5f59;
+      color: white;
+      padding: 90px 20px 20px;
+      transition: left 0.3s ease;
+      z-index: 1200;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+    }
+
+    .sidebar.open {
+      left: 0;
+    }
+
+    .sidebar h3 {
+      margin-top: 0;
+    }
+
+    .sidebar a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+      display: none;
+      z-index: 1100;
+    }
+
+    .overlay.show {
+      display: block;
+    }
+
+    /* INNHOLD */
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+
+    .page h1 {
+      text-align: center;
+      color: #0f766e;
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    .intro {
+      text-align: center;
+      max-width: 850px;
+      margin: 0 auto 35px;
+      line-height: 1.6;
+      font-size: 18px;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 25px;
+      align-items: start;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      color: #0f766e;
+    }
+
+    .status-box {
+      text-align: center;
+      padding: 28px 20px;
+      border-radius: 16px;
+      color: white;
+      margin-bottom: 20px;
+      transition: 0.3s ease;
+    }
+
+    .status-box.green {
+      background: #16a34a;
+    }
+
+    .status-box.yellow {
+      background: #eab308;
+      color: #222;
+    }
+
+    .status-box.red {
+      background: #dc2626;
+    }
+
+    .status-box h3 {
+      margin: 0 0 10px;
+      font-size: 28px;
+    }
+
+    .status-box p {
+      margin: 6px 0;
+      font-size: 18px;
+    }
+
+    .big-number {
+      font-size: 54px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .controls {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+
+    .controls button {
+      background: #0f766e;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 14px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .controls button:hover {
+      opacity: 0.95;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .mini-box {
+      background: #f1f5f4;
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .mini-box strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #0f766e;
+    }
+
+    .stops-list {
+      max-height: 560px;
+      overflow-y: auto;
+      padding-right: 5px;
+    }
+
+    .stop-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: #f7f9f9;
+      margin-bottom: 10px;
+      border-left: 6px solid transparent;
+    }
+
+    .stop-item.active {
+      background: #e6f4f1;
+      border-left-color: #0f766e;
+      font-weight: bold;
+    }
+
+    .badge {
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .badge.green {
+      background: #16a34a;
+    }
+
+    .badge.yellow {
+      background: #eab308;
+      color: #222;
+    }
+
+    .badge.red {
+      background: #dc2626;
+    }
+
+    .log {
+      margin-top: 20px;
+      background: #f7f9f9;
+      border-radius: 12px;
+      padding: 16px;
+      min-height: 90px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+      .dashboard {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar {
+        grid-template-columns: auto 1fr auto;
+        gap: 10px;
+      }
+
+      .brand-name {
+        font-size: 20px;
+      }
+
+      .page h1 {
+        font-size: 34px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="sidebar" class="sidebar">
+    <h3>Meny</h3>
+    <a href="index.html">Forside</a>
+    <a href="side2.html">Vårt prosjekt</a>
+    <a href="side3.html">Om oss</a>
+    <a href="program.html">Oversikt</a>
+  </div>
+
+  <div id="overlay" class="overlay" onclick="closeMenu()"></div>
+
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    </div>
+
+    <div class="topbar-center">
+      <img src="images/logo.png" alt="BetterWay logo" class="logo">
+      <h2 class="brand-name">BetterWay</h2>
+    </div>
+
+    <div class="topbar-right">
+      <a href="index.html" class="back-btn">Tilbake til forsiden</a>
+    </div>
+  </header>
+
+  <main class="page">
+    <h1>Oversikt</h1>
+    <p class="intro">
+      Her kan du finne oversikten over hvor mange folk som er på bussene, når de drar,
+      og hvilket bussstopp de er på.
+    </p>
+
+    <section class="dashboard">
+      <div class="card">
+        <h2>Live bussoversikt</h2>
+
+        <div id="statusBox" class="status-box green">
+          <h3 id="statusText">Liten belastning</h3>
+          <div id="passengerCount" class="big-number">0</div>
+          <p>passasjerer på bussen</p>
+        </div>
+
+        <div class="info-grid">
+          <div class="mini-box">
+            <strong>Nåværende stopp</strong>
+            <span id="currentStop">Lade allé</span>
+          </div>
+
+          <div class="mini-box">
+            <strong>Stoppnummer</strong>
+            <span id="stopNumber">1 / 30</span>
+          </div>
+
+          <div class="mini-box">
+            <strong>På bussen</strong>
+            <span id="onCount">0</span>
+          </div>
+
+          <div class="mini-box">
+            <strong>Av bussen</strong>
+            <span id="offCount">0</span>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button onclick="nextStop()">Neste stopp</button>
+          <button onclick="startAuto()">Start simulering</button>
+          <button onclick="stopAuto()">Stopp simulering</button>
+          <button onclick="resetBus()">Start på nytt</button>
+        </div>
+
+        <div class="log" id="logBox">
+          Bussen er klar til å starte simuleringen.
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Bussrute gjennom Trondheim</h2>
+        <div id="stopsList" class="stops-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("sidebar").classList.toggle("open");
+      document.getElementById("overlay").classList.toggle("show");
+    }
+
+    function closeMenu() {
+      document.getElementById("sidebar").classList.remove("open");
+      document.getElementById("overlay").classList.remove("show");
+    }
+
+    const stops = [
+      "Lade allé",
+      "Leangen",
+      "Sirkus Shopping",
+      "Strindheim",
+      "Tyholt",
+      "Berg",
+      "Moholt studentby",
+      "Voll studentby",
+      "Gløshaugen",
+      "Høgskoleringen",
+      "Studentersamfundet",
+      "Elgeseter",
+      "St. Olavs gate",
+      "Prinsens gate",
+      "Kongens gate",
+      "Torvet",
+      "Munkegata",
+      "Skansen",
+      "Ila",
+      "Ilsvika",
+      "Buran",
+      "Solsiden",
+      "Nedre Elvehavn",
+      "Lademoen",
+      "Rosenborg",
+      "Persaunet",
+      "Valentinlyst",
+      "Jakobsli",
+      "Dragvoll",
+      "Loholt"
+    ];
+
+    let currentIndex = 0;
+    let passengers = 0;
+    let autoInterval = null;
+
+    function getStatusClass(count) {
+      if (count <= 25) return "green";
+      if (count <= 50) return "yellow";
+      return "red";
+    }
+
+    function getStatusText(count) {
+      if (count <= 25) return "Liten belastning";
+      if (count <= 50) return "Halvfull buss";
+      return "Høy belastning";
+    }
+
+    function renderStops() {
+      const list = document.getElementById("stopsList");
+      list.innerHTML = "";
+
+      stops.forEach((stop, index) => {
+        const item = document.createElement("div");
+        item.className = "stop-item" + (index === currentIndex ? " active" : "");
+
+        const status = getStatusClass(passengers);
+        const left = document.createElement("div");
+        left.innerHTML = `<strong>${index + 1}. ${stop}</strong>`;
+
+        const badge = document.createElement("span");
+        badge.className = `badge ${status}`;
+        badge.textContent = index === currentIndex ? "Bussen er her" : "Stopp";
+
+        item.appendChild(left);
+        item.appendChild(badge);
+        list.appendChild(item);
+      });
+    }
+
+    function updateUI(onCount = 0, offCount = 0) {
+      const statusClass = getStatusClass(passengers);
+      const statusText = getStatusText(passengers);
+      const statusBox = document.getElementById("statusBox");
+
+      statusBox.className = `status-box ${statusClass}`;
+      document.getElementById("statusText").textContent = statusText;
+      document.getElementById("passengerCount").textContent = passengers;
+      document.getElementById("currentStop").textContent = stops[currentIndex];
+      document.getElementById("stopNumber").textContent = `${currentIndex + 1} / ${stops.length}`;
+      document.getElementById("onCount").textContent = onCount;
+      document.getElementById("offCount").textContent = offCount;
+
+      let message = "";
+      if (statusClass === "green") {
+        message = "Grønn status: Det er god plass på bussen.";
+      } else if (statusClass === "yellow") {
+        message = "Gul status: Bussen er halvfull.";
+      } else {
+        message = "Rød status: Bussen begynner å bli full.";
+      }
+
+      document.getElementById("logBox").innerHTML =
+        `<strong>${stops[currentIndex]}</strong><br>
+         ${offCount} gikk av bussen, og ${onCount} gikk på.<br>
+         Det er nå ${passengers} passasjerer på bussen.<br>
+         ${message}`;
+
+      renderStops();
+    }
+
+    function nextStop() {
+      const offCount = Math.floor(Math.random() * 16);
+      passengers = Math.max(0, passengers - offCount);
+
+      const maxCanEnter = 100 - passengers;
+      const onCount = Math.min(Math.floor(Math.random() * 21), maxCanEnter);
+      passengers += onCount;
+
+      updateUI(onCount, offCount);
+
+      currentIndex++;
+      if (currentIndex >= stops.length) {
+        currentIndex = 0;
+      }
+    }
+
+    function startAuto() {
+      if (autoInterval) return;
+      autoInterval = setInterval(nextStop, 2000);
+    }
+
+    function stopAuto() {
+      clearInterval(autoInterval);
+      autoInterval = null;
+    }
+
+    function resetBus() {
+      stopAuto();
+      currentIndex = 0;
+      passengers = 0;
+      updateUI(0, 0);
+      document.getElementById("logBox").innerHTML =
+        "Simuleringen er nullstilt. Trykk på <strong>Neste stopp</strong> eller <strong>Start simulering</strong>.";
+    }
+
+    updateUI();
+  </script>
+</body>
+</html>
