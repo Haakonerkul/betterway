@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- Tittel som vises i fanen i nettleseren -->
+  <title>BetterWay</title>
+
+  <!-- Gjør siden responsiv på mobil og nettbrett -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* Generell stil for hele nettsiden */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f8f9fa;
+      color: #333;
+    }
+
+    /* NAVBAR */
+.navbar {
+  background: white;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+.logo-text {
+  color: #0f766e;
+  margin: 0;
+}
+
+.nav-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: #0f766e;
+}
+
+    /* Toppseksjon med bakgrunnsbilde og grønn overlay */
+    header {
+      background: linear-gradient(rgba(15,118,110,0.7), rgba(15,118,110,0.7)),
+                  url("https://images.unsplash.com/photo-1544620347-c4fd4a3d5957");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    /* Stil for hver seksjon på siden */
+    section {
+      padding: 50px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    /* Overskrifter nivå 2 */
+    h2 {
+      color: #0f766e;
+    }
+
+    /* Knapper */
+    .btn {
+      display: inline-block;
+      background: #0f766e;
+      color: white;
+      padding: 12px 20px;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+/*--knapper til Kapasitet */ 
+.knapper {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.green { background: #16a34a; }
+.yellow { background: #eab308; color: black; }
+.red { background: #dc2626; }
+
+/* Meldingsboks */
+.melding {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+  background: #eee;
+  font-size: 18px;
+  font-weight: bold;
+}
+    
+    /* Prosjektoversikt (bobler) */
+/* Container – sørger for at de ligger på rad */
+.container {
+  display: flex;
+  justify-content: space-between; /* fordeler jevnt */
+  gap: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* Kortene */
+.boble {
+  flex: 1; /* gjør at alle blir like store */
+  max-width: 280px;
+
+  height: 320px; /* høyere enn bred = kortsiden opp */
+  background: #e6f4f1;
+  border-radius: 15px;
+  padding: 20px;
+
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  text-align: left;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  transition: transform 0.3s;
+}
+
+.boble:hover {
+  transform: translateY(-5px);
+}
+
+.boble h2 {
+  color: #0f766e;
+}
+
+.boble p {
+  font-size: 14px;
+}
+    
+
+    
+    /* Sentrerer tekst i seksjoner som bruker denne klassen */
+    .center {
+      text-align: center;
+    }
+
+    /* Footer nederst på siden */
+    .footer {
+      background: #0f766e;
+      color: white;
+      padding: 40px 20px 20px;
+      margin-top: 40px;
+    }
+
+    /* Innholdet i footeren deles i to kolonner */
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      max-width: 900px;
+      margin: auto;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    /* Venstre og høyre del av footer */
+    .footer-left,
+    .footer-right {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    /* Logo i footer */
+    .logo {
+      width: 120px; /* Passelig størrelse */
+      margin-top: 10px;
+      display: block;
+    }
+
+    /* Nederste linje i footer */
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+
+  
+<script>
+function visMelding(farge) {
+  const boks = document.getElementById("meldingBoks");
+
+  if (farge === "green") {
+    boks.innerHTML = "God plass";
+    boks.style.background = "#bbf7d0";
+  }
+
+  if (farge === "yellow") {
+    boks.innerHTML = "Middels plass";
+    boks.style.background = "#fef9c3";
+  }
+
+  if (farge === "red") {
+    boks.innerHTML = "Dårlig plass";
+    boks.style.background = "#fecaca";
+  }
+}
+</script>
+  
+<body>
+  
+<!-- Navigasjonsmeny -->
+<nav class="navbar">
+  <div class="nav-container">
+    <h2 class="logo-text">BetterWay</h2>
+
+    <div class="nav-links">
+      <a href="#about">Om oss</a>
+      <a href="#problem">Problem</a>
+      <a href="#solution">Løsning</a>
+      <a href="#features">Tjenester</a>
+      <a href="#who">Hvem</a>
+      <a href="#contact">Kontakt</a>
+    </div>
+  </div>
+</nav>
+  
+  <!-- Toppdel av siden -->
+  <header>
+    <h1>BetterWay</h1>
+    <p>Planlegg din reise. Improve your day.</p>
+
+    <!-- Knapp som hopper ned til seksjonen "Our Solution" -->
+    <a href="#solution" class="btn">Explore the solution</a>
+  </header>
+
+  <!-- Seksjon som beskriver utfordringen -->
+  <section id="about">
+  <h2>The Challenge</h2>
+    <p>
+      Public transport in Trondheim can be overcrowded and unpredictable.
+      This creates challenges for people with anxiety, reduced mobility,
+      or anyone who wants a smoother daily routine.
+    </p>
+  </section>
+
+  <!-- Seksjon med problemstilling -->
+  <section id="problem" class="center">
+    <h2>Problemstillingen til oppgaven</h2>
+    <p>
+      Det er et økende problem med busskapasitet i Trondheim. Busselskapene sliter med å opprettholde tilstrekkelig kapasitet i rushtiden, noe som fører til fulle busser og lange ventetider. Trondheim er en studentby, og mange studenter er helt avhengige av et velfungerende kollektivtilbud. Et stabilt og effektivt kollektivtilbud er derfor viktig for at hverdagen til studentene skal fungere. For personer med fysiske og psykiske vansker kan rushtiden være svært utfordrende. Når bussene er fulle i rushtiden, kan dette gjøre kollektivtransport mindre tilgjengelig og mer belastende for disse gruppene. I denne rapporten skal vi se på hvordan vi kan løse disse problemene ved hjelp av en digital tvilling.
+    </p>
+  </section>
+
+  <!--- Bobbler Probelmstilling --> 
+<section>
+  <h2 style="text-align:center;">Prosess / Prosjektoversikt</h2>
+
+  <div class="container">
+
+    <div class="boble">
+      <h2>Problemstilling</h2>
+      <p>
+        Hvordan kan sanntidsinformasjon om kapasiteten på kollektivtransport gjøre det enklere for individer med sosial angst å velge kollektivt?
+      </p>
+    </div>
+
+    <div class="boble">
+      <h2>Målgruppe</h2>
+      <p>
+        Hvedmålgruppe er indevider med Sosial angst 
+        Dette gjelder også synshemmede, rullestolbrukere, rullestolbrukere,
+        samt reisende som er avhengige av sitteplass på grunn av fysiske helsemessige forhold.
+. 
+      </p>
+    </div>
+
+    <div class="boble">
+      <h2>Løsning</h2>
+      <p>
+        I praksis innebærer BetterWay en digital tvilling laget i QGIS med en python-konsole av transsportsystemet
+       Informasjonen presenteres gjennom en intuitiv grensesnittsløsning med tydelige kapasitetsindikatorer. 
+        Brukeren får et effektivt beslutningsgrunnlag basert på et fargekodet bussikon. 
+        Grønn tilsvarer lav belastning, gul tilsvarer middels belastning og rød tilsvarer høy belastning.  
+      </p>
+    </div>
+
+  </div>
+</section>
+
+  
+  <!-- Seksjon med løsning -->
+  <section id="solution">
+    <h2>hvordan fungerer BetterWay</h2>
+    <p>
+      BetterWay skal bli implimentert inn i 
+    </p>
+  </section>
+<!-- visualusering --> 
+  <section>
+  <h2>Kapasitetsindikator</h2>
+
+  <!-- Knapper -->
+  <div class="knapper">
+    <button class="green" onclick="visMelding('green')">Grønn</button>
+    <button class="yellow" onclick="visMelding('yellow')">Gul</button>
+    <button class="red" onclick="visMelding('red')">Rød</button>
+  </div>
+
+  <!-- Meldingsboks -->
+  <div id="meldingBoks" class="melding">
+    Trykk på en knapp for å se kapasitet
+  </div>
+</section>
+
+  <!-- Liste over funksjoner -->
+  <section id="features">
+    <h2>Key Features</h2>
+    <ul>
+      <li>Real-time bus crowding</li>
+      <li>Accessibility information</li>
+      <li>Smart journey planning</li>
+      <li>More predictable travel</li>
+    </ul>
+  </section>
+
+  <!-- Hvem løsningen hjelper -->
+ <section id="who">
+    <h2>Who It Helps</h2>
+    <p>
+      Designed for everyone — especially people with everyday challenges,
+      students, and commuters.
+    </p>
+  </section>
+
+  <!-- Visjon og mål -->
+  <section>
+    <h2>Impact & Vision</h2>
+    <p>
+      Our goal is to make public transport more inclusive, predictable,
+      and user-friendly.
+    </p>
+
+    <!-- Knapp til side 2 -->
+    <a href="side2.html" class="btn">Gå til side 2</a>
+  </section>
+
+  <!-- Footer nederst -->
+ <footer class="footer" id="contact">
+    <div class="footer-content">
+
+      <!-- Venstre side i footer -->
+      <div class="footer-left">
+        <h3>BetterWay</h3>
+        <p>Planlegg din reise enklere.</p>        
+        <img src="images/logo.png" alt="BetterWay logo" class="logo">
+      </div>
+
+      <!-- Høyre side i footer -->
+      <div class="footer-right">
+        <h4>Kontakt oss</h4>
+        <p>Email: betterway@ntnu.no</p>
+        <p>Telefon: +47 123 45 678</p>
+        <p>Trondheim, Norge</p>
+      </div>
+
+    </div>
+
+    <!-- Nederste tekstlinje -->
+    <div class="footer-bottom">
+      <p>© 2026 BetterWay – Studentprosjekt NTNU</p>
+    </div>
+  </footer>
+
+</body>
+</html>
