@@ -404,154 +404,228 @@
   </main>
 
   <script>
-    function toggleMenu() {
-      document.getElementById("sidebar").classList.toggle("open");
-      document.getElementById("overlay").classList.toggle("show");
+  function toggleMenu() {
+    document.getElementById("sidebar").classList.toggle("open");
+    document.getElementById("overlay").classList.toggle("show");
+  }
+
+  function closeMenu() {
+    document.getElementById("sidebar").classList.remove("open");
+    document.getElementById("overlay").classList.remove("show");
+  }
+
+  const stops = [
+    "Lade allé",
+    "Leangen",
+    "Sirkus Shopping",
+    "Strindheim",
+    "Tyholt",
+    "Berg",
+    "Moholt studentby",
+    "Voll studentby",
+    "Gløshaugen",
+    "Høgskoleringen",
+    "Studentersamfundet",
+    "Elgeseter",
+    "St. Olavs gate",
+    "Prinsens gate",
+    "Kongens gate",
+    "Torvet",
+    "Munkegata",
+    "Skansen",
+    "Ila",
+    "Ilsvika",
+    "Buran",
+    "Solsiden",
+    "Nedre Elvehavn",
+    "Lademoen",
+    "Rosenborg",
+    "Persaunet",
+    "Valentinlyst",
+    "Jakobsli",
+    "Dragvoll",
+    "Loholt"
+  ];
+
+  let currentIndex = 0;
+  let passengers = 0;
+  let autoInterval = null;
+  const MAX_CAPACITY = 100;
+
+  function getStatusClass(count) {
+    if (count <= 25) return "green";
+    if (count <= 50) return "yellow";
+    return "red";
+  }
+
+  function getStatusText(count) {
+    if (count <= 25) return "Liten belastning";
+    if (count <= 50) return "Halvfull buss";
+    return "Høy belastning";
+  }
+
+  function randomBetween(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  function getStopFlow(index, currentPassengers) {
+    const stopName = stops[index];
+    const lastIndex = stops.length - 1;
+
+    let onMin = 0, onMax = 0, offMin = 0, offMax = 0;
+
+    // Startstopp: bussen starter tom
+    if (index === 0) {
+      onMin = 4; onMax = 10;
+      offMin = 0; offMax = 0;
     }
 
-    function closeMenu() {
-      document.getElementById("sidebar").classList.remove("open");
-      document.getElementById("overlay").classList.remove("show");
+    // Tidlige stopp: flere går på enn av
+    else if (index >= 1 && index <= 7) {
+      onMin = 3; onMax = 9;
+      offMin = 0; offMax = 2;
     }
 
-    const stops = [
-      "Lade allé",
-      "Leangen",
-      "Sirkus Shopping",
-      "Strindheim",
-      "Tyholt",
-      "Berg",
-      "Moholt studentby",
-      "Voll studentby",
-      "Gløshaugen",
-      "Høgskoleringen",
-      "Studentersamfundet",
-      "Elgeseter",
-      "St. Olavs gate",
-      "Prinsens gate",
-      "Kongens gate",
-      "Torvet",
-      "Munkegata",
-      "Skansen",
-      "Ila",
-      "Ilsvika",
-      "Buran",
-      "Solsiden",
-      "Nedre Elvehavn",
-      "Lademoen",
-      "Rosenborg",
-      "Persaunet",
-      "Valentinlyst",
-      "Jakobsli",
-      "Dragvoll",
-      "Loholt"
-    ];
-
-    let currentIndex = 0;
-    let passengers = 0;
-    let autoInterval = null;
-
-    function getStatusClass(count) {
-      if (count <= 25) return "green";
-      if (count <= 50) return "yellow";
-      return "red";
+    // Student/campus-område: fortsatt mange på, men litt av også
+    else if (index >= 8 && index <= 11) {
+      onMin = 2; onMax = 6;
+      offMin = 1; offMax = 5;
     }
 
-    function getStatusText(count) {
-      if (count <= 25) return "Liten belastning";
-      if (count <= 50) return "Halvfull buss";
-      return "Høy belastning";
+    // Sentrumsstopp: mange går av
+    else if (
+      stopName === "St. Olavs gate" ||
+      stopName === "Prinsens gate" ||
+      stopName === "Kongens gate" ||
+      stopName === "Torvet" ||
+      stopName === "Munkegata"
+    ) {
+      onMin = 1; onMax = 4;
+      offMin = 6; offMax = 14;
     }
 
-    function renderStops() {
-      const list = document.getElementById("stopsList");
-      list.innerHTML = "";
-
-      stops.forEach((stop, index) => {
-        const item = document.createElement("div");
-        item.className = "stop-item" + (index === currentIndex ? " active" : "");
-
-        const status = getStatusClass(passengers);
-        const left = document.createElement("div");
-        left.innerHTML = `<strong>${index + 1}. ${stop}</strong>`;
-
-        const badge = document.createElement("span");
-        badge.className = `badge ${status}`;
-        badge.textContent = index === currentIndex ? "Bussen er her" : "Stopp";
-
-        item.appendChild(left);
-        item.appendChild(badge);
-        list.appendChild(item);
-      });
+    // Midt/sen rute: gradvis mer av enn på
+    else if (index >= 17 && index <= 25) {
+      onMin = 1; onMax = 4;
+      offMin = 3; offMax = 8;
     }
 
-    function updateUI(onCount = 0, offCount = 0) {
-      const statusClass = getStatusClass(passengers);
-      const statusText = getStatusText(passengers);
-      const statusBox = document.getElementById("statusBox");
+    // Siste del av ruta: bussen tømmes
+    else if (index >= 26 && index < lastIndex) {
+      onMin = 0; onMax = 2;
+      offMin = 4; offMax = 10;
+    }
 
-      statusBox.className = `status-box ${statusClass}`;
-      document.getElementById("statusText").textContent = statusText;
-      document.getElementById("passengerCount").textContent = passengers;
-      document.getElementById("currentStop").textContent = stops[currentIndex];
-      document.getElementById("stopNumber").textContent = `${currentIndex + 1} / ${stops.length}`;
-      document.getElementById("onCount").textContent = onCount;
-      document.getElementById("offCount").textContent = offCount;
+    // Endestopp: alle skal av
+    else if (index === lastIndex) {
+      onMin = 0; onMax = 0;
+      offMin = currentPassengers; offMax = currentPassengers;
+    }
 
-      let message = "";
-      if (statusClass === "green") {
-        message = "Grønn status: Det er god plass på bussen.";
-      } else if (statusClass === "yellow") {
-        message = "Gul status: Bussen er halvfull.";
+    let offCount = randomBetween(offMin, offMax);
+    offCount = Math.min(offCount, currentPassengers);
+
+    let onCount = randomBetween(onMin, onMax);
+    onCount = Math.min(onCount, MAX_CAPACITY - (currentPassengers - offCount));
+
+    return { onCount, offCount };
+  }
+
+  function renderStops() {
+    const list = document.getElementById("stopsList");
+    list.innerHTML = "";
+
+    stops.forEach((stop, index) => {
+      const item = document.createElement("div");
+      item.className = "stop-item" + (index === currentIndex ? " active" : "");
+
+      const left = document.createElement("div");
+      left.innerHTML = `<strong>${index + 1}. ${stop}</strong>`;
+
+      const badge = document.createElement("span");
+      if (index === currentIndex) {
+        badge.className = "badge " + getStatusClass(passengers);
+        badge.textContent = "Bussen er her";
       } else {
-        message = "Rød status: Bussen begynner å bli full.";
+        badge.className = "badge green";
+        badge.textContent = "Stopp";
       }
 
-      document.getElementById("logBox").innerHTML =
-        `<strong>${stops[currentIndex]}</strong><br>
-         ${offCount} gikk av bussen, og ${onCount} gikk på.<br>
-         Det er nå ${passengers} passasjerer på bussen.<br>
-         ${message}`;
+      item.appendChild(left);
+      item.appendChild(badge);
+      list.appendChild(item);
+    });
+  }
 
-      renderStops();
+  function updateUI(onCount = 0, offCount = 0) {
+    const statusClass = getStatusClass(passengers);
+    const statusText = getStatusText(passengers);
+    const statusBox = document.getElementById("statusBox");
+
+    statusBox.className = `status-box ${statusClass}`;
+    document.getElementById("statusText").textContent = statusText;
+    document.getElementById("passengerCount").textContent = passengers;
+    document.getElementById("currentStop").textContent = stops[currentIndex];
+    document.getElementById("stopNumber").textContent = `${currentIndex + 1} / ${stops.length}`;
+    document.getElementById("onCount").textContent = onCount;
+    document.getElementById("offCount").textContent = offCount;
+
+    let message = "";
+    if (statusClass === "green") {
+      message = "Grønn status: Det er god plass på bussen.";
+    } else if (statusClass === "yellow") {
+      message = "Gul status: Bussen er halvfull.";
+    } else {
+      message = "Rød status: Bussen begynner å bli full.";
     }
 
-    function nextStop() {
-      const offCount = Math.floor(Math.random() * 16);
-      passengers = Math.max(0, passengers - offCount);
+    document.getElementById("logBox").innerHTML =
+      `<strong>${stops[currentIndex]}</strong><br>
+       ${offCount} gikk av bussen, og ${onCount} gikk på.<br>
+       Det er nå ${passengers} passasjerer på bussen.<br>
+       ${message}`;
 
-      const maxCanEnter = 100 - passengers;
-      const onCount = Math.min(Math.floor(Math.random() * 21), maxCanEnter);
-      passengers += onCount;
+    renderStops();
+  }
 
-      updateUI(onCount, offCount);
+  function nextStop() {
+    const flow = getStopFlow(currentIndex, passengers);
 
-      currentIndex++;
-      if (currentIndex >= stops.length) {
-        currentIndex = 0;
-      }
-    }
+    passengers -= flow.offCount;
+    passengers += flow.onCount;
 
-    function startAuto() {
-      if (autoInterval) return;
-      autoInterval = setInterval(nextStop, 2000);
-    }
+    if (passengers < 0) passengers = 0;
+    if (passengers > MAX_CAPACITY) passengers = MAX_CAPACITY;
 
-    function stopAuto() {
-      clearInterval(autoInterval);
-      autoInterval = null;
-    }
+    updateUI(flow.onCount, flow.offCount);
 
-    function resetBus() {
-      stopAuto();
+    currentIndex++;
+    if (currentIndex >= stops.length) {
       currentIndex = 0;
-      passengers = 0;
-      updateUI(0, 0);
-      document.getElementById("logBox").innerHTML =
-        "Simuleringen er nullstilt. Trykk på <strong>Neste stopp</strong> eller <strong>Start simulering</strong>.";
+      passengers = 0; // ny tur starter tom
     }
+  }
 
-    updateUI();
-  </script>
+  function startAuto() {
+    if (autoInterval) return;
+    autoInterval = setInterval(nextStop, 2000);
+  }
+
+  function stopAuto() {
+    clearInterval(autoInterval);
+    autoInterval = null;
+  }
+
+  function resetBus() {
+    stopAuto();
+    currentIndex = 0;
+    passengers = 0;
+    updateUI(0, 0);
+    document.getElementById("logBox").innerHTML =
+      "Simuleringen er nullstilt. Bussen starter tom på første stopp.";
+  }
+
+  updateUI(0, 0);
+</script>
 </body>
 </html>
