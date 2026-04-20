@@ -132,6 +132,21 @@
     .overlay.show {
       display: block;
     }
+        /* VIDEO */
+    .video-section {
+      width: 100%;
+      padding: 60px 0;
+      display: flex;
+      justify-content: center;
+      background: #f8f9fa;
+    }
+
+    .hero-video {
+      width: 80%;
+      max-width: 900px;
+      border-radius: 16px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    }
 
     /* HERO / FØRSTE SKJERM */
     .hero {
@@ -524,7 +539,14 @@
 
     <div class="hero-right"></div>
   </section>
-
+  
+  <!-- VIDEO -->
+  <section class="video-section">
+    <video autoplay muted loop playsinline class="hero-video">
+      <source src="videos/Better way.mp4" type="video/mp4">
+    </video>
+  </section>
+  
   <!-- prosjekt knapp -->
   <section class="project-cta">
   <h2>Vil du lære mer om vårt prosjekt?</h2>
