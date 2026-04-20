@@ -293,13 +293,13 @@
       <div class="team-card">
         <img src="images/person2.jpg" alt="Profilbilde person 2" class="profile-image"
              onerror="this.outerHTML='<div class=&quot;profile-image placeholder&quot;>Bilde 2</div>'">
-        <div class="team-name">Navn Etternavn</div>
+        <div class="team-name">Helene Bråthen Kristiansen</div>
         <div class="team-role">Utvikler</div>
         <div class="team-desc">
           Arbeider med nettsiden og den tekniske løsningen. Har fokus på struktur,
           funksjonalitet og hvordan brukeren møter systemet.
         </div>
-        <a href="mailto:navn2@ntnu.no" class="team-mail">navn2@ntnu.no</a>
+        <a href="mailto:helenbkr@stud.ntnu.no" class="team-mail">helenbkr@stud.ntnu.no</a>
       </div>
 
       <div class="team-card">
