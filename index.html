@@ -348,6 +348,70 @@
     padding: 20px 36px;
   }
 }
+
+        /* om oss knapp */
+    .project-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background: #0f766e; /* grønn BetterWay */
+  color: white;
+  text-decoration: none;
+  font-size: 26px;
+  padding: 28px 60px;
+  border-radius: 999px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+}
+
+.project-cta h2 {
+  font-size: 48px;
+  margin-bottom: 50px;
+  color: #111;
+}
+
+.project-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background: #0f766e;
+  color: white;
+  text-decoration: none;
+  font-size: 26px;
+  padding: 28px 60px;
+  border-radius: 999px;
+  font-weight: 500;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.project-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+.arrow {
+  font-size: 32px;
+  line-height: 1;
+}
+
+@media (max-width: 900px) {
+  .project-cta {
+    padding: 80px 20px;
+  }
+
+  .project-cta h2 {
+    font-size: 34px;
+  }
+
+  .project-btn {
+    font-size: 20px;
+    padding: 20px 36px;
+  }
+}
+
+
+    
     /* FOOTER */
 .footer {
   background: #0f766e;
@@ -466,6 +530,14 @@
   <h2>Vil du lære mer om vårt prosjekt?</h2>
   <a href="side2.html" class="project-btn">
     Vårt Prosjekt <span class="arrow">→</span>
+  </a>
+</section>
+
+   <!-- om oss knapp knapp -->
+  <section class="project-cta">
+  <h2>Vil du lære mer om oss?</h2>
+  <a href="side2.html" class="project-btn">
+    om oss <span class="arrow">→</span>
   </a>
 </section>
 
