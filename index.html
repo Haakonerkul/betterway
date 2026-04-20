@@ -206,6 +206,7 @@
       background-repeat: no-repeat;
     }
 
+    
     /* RESPONSIV */
     @media (max-width: 900px) {
       .topbar {
@@ -286,6 +287,58 @@
         text-align: center;
       }
     }
+
+    /* prosjekt knapp */
+    .project-cta {
+  background: #e9eef5;
+  text-align: center;
+  padding: 120px 20px;
+}
+
+.project-cta h2 {
+  font-size: 48px;
+  margin-bottom: 50px;
+  color: #111;
+}
+
+.project-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background: #3367e8;
+  color: white;
+  text-decoration: none;
+  font-size: 26px;
+  padding: 28px 60px;
+  border-radius: 999px;
+  font-weight: 500;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.project-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+.arrow {
+  font-size: 32px;
+  line-height: 1;
+}
+
+@media (max-width: 900px) {
+  .project-cta {
+    padding: 80px 20px;
+  }
+
+  .project-cta h2 {
+    font-size: 34px;
+  }
+
+  .project-btn {
+    font-size: 20px;
+    padding: 20px 36px;
+  }
+}
     /* FOOTER */
 .footer {
   background: #0f766e;
@@ -398,6 +451,14 @@
 
     <div class="hero-right"></div>
   </section>
+
+  <!-- prosjekt knapp -->
+  <section class="project-cta">
+  <h2>Vil du lære mer om vårt prosjekt?</h2>
+  <a href="side2.html" class="project-btn">
+    Vårt Prosjekt <span class="arrow">→</span>
+  </a>
+</section>
 
   <!-- Footer nederst på siden -->
   <footer class="footer" id="contact">
