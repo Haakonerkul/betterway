@@ -249,22 +249,25 @@
       font-size: 32px;
       line-height: 1;
     }
-
-        /* VIDEO */
+    
+    /* VIDEO */
     .video-section {
-      width: 50%;
-      padding: 40px 20px;
-      background: #f8f9fa;
       display: flex;
+      gap: 30px;
+      padding: 40px;
       justify-content: center;
+      flex-wrap: wrap; /* gjør at det funker på mobil */
     }
     
-    .hero-video {
+    .video-wrapper {
+      flex: 1;
+      max-width: 500px;
+    }
+    
+    .video-wrapper video {
       width: 100%;
-      max-width: 1000px;
       border-radius: 16px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
-      display: block;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.2);
     }
 
     /* FOOTER */
@@ -475,13 +478,22 @@
     <div class="hero-right"></div>
   </section>
   
-  <!-- VIDEO -->
-  <section class="video-section">
-    <video class="hero-video" controls autoplay muted loop playsinline>
-      <source src="images/betterway.mp4" type="video/mp4">
-      Nettleseren din støtter ikke video.
-    </video>
-  </section>
+      <!-- VIDEOER SIDE BY SIDE -->
+    <section class="video-section">
+    
+      <div class="video-wrapper">
+        <video controls>
+          <source src="images/betterway.mp4" type="video/mp4">
+        </video>
+      </div>
+    
+      <div class="video-wrapper">
+        <video controls>
+          <source src="images/QGISBusslinje.mp4" type="video/mp4">
+        </video>
+      </div>
+    
+    </section>
   
   <!-- prosjekt knapp -->
   <section class="project-cta">
