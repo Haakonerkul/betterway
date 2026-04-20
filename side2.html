@@ -264,6 +264,51 @@
       padding-left: 20px;
     }
 
+        /* Metodeblokker med bilde */
+    .method-block {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin: 35px 0;
+      background: #f4f8f8;
+      border-radius: 16px;
+      padding: 25px;
+    }
+
+    .method-block.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .method-text {
+      flex: 1.4;
+    }
+
+    .method-image {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .method-image img {
+      width: 100%;
+      max-width: 360px;
+      border-radius: 12px;
+      display: block;
+    }
+
+    .method-image .placeholder {
+      width: 100%;
+      min-height: 220px;
+    }
+
+    @media (max-width: 900px) {
+      .method-block,
+      .method-block.reverse {
+        flex-direction: column;
+      }
+    }
+
     /* Footer */
     .footer {
       background: #0f766e;
@@ -468,66 +513,102 @@
     </section>
 
     <section id="metode" class="tab-content">
-      <h2>Metode</h2>
+  <h2>Metode</h2>
 
-      
+  <p>
+    I prosjektet har vi brukt QGIS og Python for å utvikle en digital tvilling av bussrute 3
+    i Trondheim. Modellen simulerer passasjerbelastning ved holdeplasser og visualiserer
+    kapasitetsnivåer ved hjelp av fargekoding.
+  </p>
+
+  <div class="method-block">
+    <div class="method-text">
       <p>
-        I prosjektet har vi brukt QGIS og Python for å utvikle en digital tvilling av bussrute 3
-        i Trondheim. Modellen simulerer passasjerbelastning ved holdeplasser og visualiserer
-        kapasitetsnivåer ved hjelp av fargekoding.
-      </p>
-
-
-      
-      <p> 
-        Oppsummering: Metode og fremgangsmåte
-Dette prosjektet har benyttet en iterativ metodikk for å utvikle en digital tvilling av bussrute 3 i Trondheim, med særlig fokus på simulering av passasjerbelastning. 
+        <strong>Oppsummering: Metode og fremgangsmåte</strong><br>
+        Dette prosjektet har benyttet en iterativ metodikk for å utvikle en digital tvilling av bussrute 3 i Trondheim, med særlig fokus på simulering av passasjerbelastning.
         Arbeidet er strukturert etter VDC-rammeverket (Virtual Design and Construction), der integrert prosjektstyring (PPM), tverrfaglig samhandling (ICE) og digitale modeller (BIM) har stått sentralt.
       </p>
-      
+    </div>
+    <div class="method-image">
+      <img src="images/metode1.jpg" alt="Metode og fremgangsmåte"
+           onerror="this.outerHTML='<div class=&quot;placeholder&quot;>Legg inn bilde: images/metode1.jpg</div>'">
+    </div>
+  </div>
+
+  <div class="method-block reverse">
+    <div class="method-text">
       <p>
-Hovedverktøyet for utviklingen har vært QGIS. 
-        Ved hjelp av Python-skripting er det laget en dynamisk modell der bussens posisjon og passasjerantall endres over tid. 
-        Siden sanntidsdata fra AtB ikke var tilgjengelig i prosjektperioden, er datagrunnlaget basert på syntetiske data generert med KI (ChatGPT). 
+        <strong>Hovedverktøyet for utviklingen har vært QGIS</strong><br>
+        Ved hjelp av Python-skripting er det laget en dynamisk modell der bussens posisjon og passasjerantall endres over tid.
+        Siden sanntidsdata fra AtB ikke var tilgjengelig i prosjektperioden, er datagrunnlaget basert på syntetiske data generert med KI (ChatGPT).
         Disse dataene er modellert etter holdeplassenes funksjonelle egenskaper, som for eksempel forventet rushtid i studentområder.
-</p>
-      
-      <p>
-Sentrale elementer i løsningen:
-
-Visualisering: En tidsbasert animasjon i QGIS viser bussens bevegelse,
-      der regelstyrt symbolisering (grønn, gul og rød fargekode) indikerer ledig kapasitet og sitteplassgaranti.
-</p>
-      
-      <p>
-Samhandlingsverktøy: Prosjektet har benyttet prosesskart, 
-      SPGR-analyser og Emosjonsdiamanten for å sikre effektiv gruppedynamikk og arbeidsflyt.
-</p>
-      
-      <p>
-Teknologi: Ulike KI-verktøy (ChatGPT, Gemini, Copilot) er brukt til koding og visuell utforming,
-      mens Canva og Clips er benyttet til formidling av resultatene gjennom video og nettside.
-</p>
-      
-      <p>
-Løsningen fungerer som en prototype som demonstrerer hvordan geografisk visualisering og sanntidsdata kan redusere kognitiv belastning og øke forutsigbarheten for kollektivtrafikanter.
       </p>
+    </div>
+    <div class="method-image">
+      <img src="images/metode2.jpg" alt="QGIS og Python"
+           onerror="this.outerHTML='<div class=&quot;placeholder&quot;>Legg inn bilde: images/metode2.jpg</div>'">
+    </div>
+  </div>
 
-      <ul>
-        <li>Rute og holdeplasser ble modellert i QGIS</li>
-        <li>Python ble brukt til å simulere passasjerdata</li>
-        <li>Visualisering ble laget med grønne, gule og røde indikatorer</li>
-        <li>Nettsiden presenterer resultatene på en enkel måte</li>
-      </ul>
+  <div class="method-block">
+    <div class="method-text">
+      <p>
+        <strong>Sentrale elementer i løsningen</strong><br>
+        Visualisering: En tidsbasert animasjon i QGIS viser bussens bevegelse, der regelstyrt symbolisering (grønn, gul og rød fargekode) indikerer ledig kapasitet og sitteplassgaranti.
+      </p>
+    </div>
+    <div class="method-image">
+      <img src="images/metode3.jpg" alt="Visualisering i løsningen"
+           onerror="this.outerHTML='<div class=&quot;placeholder&quot;>Legg inn bilde: images/metode3.jpg</div>'">
+    </div>
+  </div>
 
-      <div class="media-grid">
-        <div class="media-card">
-          <div class="placeholder">Plass til skjermbilde fra QGIS</div>
-        </div>
-        <div class="media-card">
-          <div class="placeholder">Plass til metodevideo</div>
-        </div>
-      </div>
+  <div class="method-block reverse">
+    <div class="method-text">
+      <p>
+        <strong>Samhandlingsverktøy</strong><br>
+        Prosjektet har benyttet prosesskart, SPGR-analyser og Emosjonsdiamanten for å sikre effektiv gruppedynamikk og arbeidsflyt.
+      </p>
+    </div>
+    <div class="method-image">
+      <img src="images/metode4.jpg" alt="Samhandlingsverktøy"
+           onerror="this.outerHTML='<div class=&quot;placeholder&quot;>Legg inn bilde: images/metode4.jpg</div>'">
+    </div>
+  </div>
+
+  <div class="method-block">
+    <div class="method-text">
+      <p>
+        <strong>Teknologi</strong><br>
+        Ulike KI-verktøy (ChatGPT, Gemini, Copilot) er brukt til koding og visuell utforming, mens Canva og Clips er benyttet til formidling av resultatene gjennom video og nettside.
+      </p>
+    </div>
+    <div class="method-image">
+      <img src="images/metode5.jpg" alt="Teknologi brukt i prosjektet"
+           onerror="this.outerHTML='<div class=&quot;placeholder&quot;>Legg inn bilde: images/metode5.jpg</div>'">
+    </div>
+  </div>
+
+  <div class="method-block reverse">
+    <div class="method-text">
+      <p>
+        <strong>Løsningen fungerer som en prototype</strong><br>
+        Løsningen demonstrerer hvordan geografisk visualisering og sanntidsdata kan redusere kognitiv belastning og øke forutsigbarheten for kollektivtrafikanter.
+      </p>
+    </div>
+    <div class="method-image">
+      <img src="images/metode6.jpg" alt="Prototype og resultat"
+           onerror="this.outerHTML='<div class=&quot;placeholder&quot;>Legg inn bilde: images/metode6.jpg</div>'">
+    </div>
+  </div>
+
+  <ul>
+    <li>Rute og holdeplasser ble modellert i QGIS</li>
+    <li>Python ble brukt til å simulere passasjerdata</li>
+    <li>Visualisering ble laget med grønne, gule og røde indikatorer</li>
+    <li>Nettsiden presenterer resultatene på en enkel måte</li>
+  </ul>
+</section>
     </section>
 
     <section id="utstyr" class="tab-content">
