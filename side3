@@ -317,13 +317,13 @@
       <div class="team-card">
         <img src="images/person4.jpg" alt="Profilbilde person 4" class="profile-image"
              onerror="this.outerHTML='<div class=&quot;profile-image placeholder&quot;>Bilde 4</div>'">
-        <div class="team-name">Navn Etternavn</div>
+        <div class="team-name">Marte Lundeland</div>
         <div class="team-role">Designansvarlig</div>
         <div class="team-desc">
           Har ansvar for det visuelle uttrykket i prosjektet og hvordan informasjonen
           presenteres på en tydelig og brukervennlig måte.
         </div>
-        <a href="mailto:navn4@ntnu.no" class="team-mail">navn4@ntnu.no</a>
+        <a href="mailto:malundel@stud.ntnu.no" class="team-mail">malundel@stud.ntnu.no</a>
       </div>
 
       <div class="team-card">
