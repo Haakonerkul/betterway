@@ -82,6 +82,30 @@
       font-weight: bold;
     }
 
+    /* QGIS VIDEO */
+        .top-video {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+    }
+    
+    .top-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .video-text {
+      position: absolute;
+      bottom: 30px;
+      left: 40px;
+      color: white;
+      font-size: 28px;
+      font-weight: bold;
+      text-shadow: 0 4px 15px rgba(0,0,0,0.7);
+    }
+    
     /* SIDEMENY */
     .sidebar {
       position: fixed;
@@ -344,6 +368,18 @@
       <a href="index.html" class="back-btn">Tilbake til forsiden</a>
     </div>
   </header>
+  
+  <!-- QGIS VIDEO -->
+  <section class="top-video">
+  
+    <video autoplay muted loop playsinline>
+      <source src="images/qgisvideo.mp4" type="video/mp4">
+    </video>
+  
+    <div class="video-text">
+      Utforsk bussruten i Trondheim i sanntid
+    </div>
+  </section>
 
   <main class="page">
     <h1>Oversikt</h1>
