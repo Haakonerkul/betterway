@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BetterWay</title>
 
-
-
   <style>
     * {
       box-sizing: border-box;
@@ -132,21 +130,6 @@
     .overlay.show {
       display: block;
     }
-        /* VIDEO */
-    .video-section {
-      width: 100%;
-      padding: 60px 0;
-      display: flex;
-      justify-content: center;
-      background: #f8f9fa;
-    }
-
-    .hero-video {
-      width: 80%;
-      max-width: 900px;
-      border-radius: 16px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-    }
 
     /* HERO / FØRSTE SKJERM */
     .hero {
@@ -221,7 +204,112 @@
       background-repeat: no-repeat;
     }
 
-    
+    /* CTA-SEKSJONER */
+    .project-cta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 20px;
+      background: #e9eef5;
+      gap: 40px;
+    }
+
+    .project-cta + .project-cta {
+      margin-top: 80px;
+    }
+
+    .project-cta h2 {
+      font-size: 48px;
+      margin: 0;
+      color: #111;
+    }
+
+    .project-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      background: #0f766e;
+      color: white;
+      text-decoration: none;
+      font-size: 26px;
+      padding: 28px 70px;
+      border-radius: 999px;
+      font-weight: 500;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .project-btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
+    }
+
+    .arrow {
+      font-size: 32px;
+      line-height: 1;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: #0f766e;
+      color: white;
+      padding: 50px 20px 20px;
+      margin-top: 60px;
+    }
+
+    .footer-content {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .footer-section h3,
+    .footer-section h4 {
+      margin-bottom: 15px;
+    }
+
+    .footer-section p {
+      margin: 5px 0;
+    }
+
+    .footer-section a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      margin-bottom: 8px;
+      transition: 0.2s;
+    }
+
+    .footer-section a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-logo {
+      width: 100px;
+      margin-top: 10px;
+      background: white;
+      padding: 6px;
+      border-radius: 8px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255,255,255,0.3);
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
     /* RESPONSIV */
     @media (max-width: 900px) {
       .topbar {
@@ -262,6 +350,19 @@
       .hero-content p {
         font-size: 18px;
       }
+
+      .project-cta {
+        padding: 80px 20px;
+      }
+
+      .project-cta h2 {
+        font-size: 34px;
+      }
+
+      .project-btn {
+        font-size: 20px;
+        padding: 20px 36px;
+      }
     }
 
     @media (max-width: 600px) {
@@ -301,195 +402,12 @@
         width: 100%;
         text-align: center;
       }
+
+      .project-btn {
+        width: 100%;
+        justify-content: center;
+      }
     }
-
-    /* prosjekt knapp */
-    .project-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 16px;
-  background: #0f766e; /* grønn BetterWay */
-  color: white;
-  text-decoration: none;
-  font-size: 26px;
-  padding: 28px 60px;
-  border-radius: 999px;
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
-}
-
-.project-cta h2 {
-  font-size: 48px;
-  margin-bottom: 50px;
-  color: #111;
-}
-
-.project-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 16px;
-  background: #0f766e;
-  color: white;
-  text-decoration: none;
-  font-size: 26px;
-  padding: 28px 60px;
-  border-radius: 999px;
-  font-weight: 500;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-.project-btn:hover {
-  transform: translateY(-2px);
-  opacity: 0.95;
-}
-
-.arrow {
-  font-size: 32px;
-  line-height: 1;
-}
-
-@media (max-width: 900px) {
-  .project-cta {
-    padding: 80px 20px;
-  }
-
-  .project-cta h2 {
-    font-size: 34px;
-  }
-
-  .project-btn {
-    font-size: 20px;
-    padding: 20px 36px;
-  }
-}
-
-        /* om oss knapp */
-    .project-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 16px;
-  background: #0f766e; /* grønn BetterWay */
-  color: white;
-  text-decoration: none;
-  font-size: 26px;
-  padding: 28px 60px;
-  border-radius: 999px;
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
-}
-
-.project-cta h2 {
-  font-size: 48px;
-  margin-bottom: 50px;
-  color: #111;
-}
-
-.project-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 16px;
-  background: #0f766e;
-  color: white;
-  text-decoration: none;
-  font-size: 26px;
-  padding: 28px 60px;
-  border-radius: 999px;
-  font-weight: 500;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-.project-btn:hover {
-  transform: translateY(-2px);
-  opacity: 0.95;
-}
-
-.arrow {
-  font-size: 32px;
-  line-height: 1;
-}
-
-@media (max-width: 900px) {
-  .project-cta {
-    padding: 80px 20px;
-  }
-
-  .project-cta h2 {
-    font-size: 34px;
-  }
-
-  .project-btn {
-    font-size: 20px;
-    padding: 20px 36px;
-  }
-}
-
-
-    
-    /* FOOTER */
-.footer {
-  background: #0f766e;
-  color: white;
-  padding: 50px 20px 20px;
-  margin-top: 60px;
-}
-
-.footer-content {
-  max-width: 1100px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-
-.footer-section {
-  flex: 1;
-  min-width: 220px;
-}
-
-.footer-section h3,
-.footer-section h4 {
-  margin-bottom: 15px;
-}
-
-.footer-section p {
-  margin: 5px 0;
-}
-
-/* Lenker */
-.footer-section a {
-  display: block;
-  color: white;
-  text-decoration: none;
-  margin-bottom: 8px;
-  transition: 0.2s;
-}
-
-.footer-section a:hover {
-  text-decoration: underline;
-}
-
-/* Logo */
-.footer-logo {
-  width: 100px;
-  margin-top: 10px;
-  background: white;
-  padding: 6px;
-  border-radius: 8px;
-}
-
-/* Nederst */
-.footer-bottom {
-  text-align: center;
-  margin-top: 30px;
-  padding-top: 15px;
-  border-top: 1px solid rgba(255,255,255,0.3);
-  font-size: 14px;
-  opacity: 0.9;
-}
-    
   </style>
 </head>
 <body>
@@ -539,29 +457,22 @@
 
     <div class="hero-right"></div>
   </section>
-  
-  <!-- VIDEO -->
-  <section class="video-section">
-    <video autoplay muted loop playsinline class="hero-video">
-      <source src="videos/betterway.mp4" type="video/mp4">
-    </video>
-  </section>
-  
+
   <!-- prosjekt knapp -->
   <section class="project-cta">
-  <h2>Vil du lære mer om vårt prosjekt?</h2>
-  <a href="side2.html" class="project-btn">
-    Vårt Prosjekt <span class="arrow">→</span>
-  </a>
-</section>
+    <h2>Vil du lære mer om vårt prosjekt?</h2>
+    <a href="side2.html" class="project-btn">
+      Vårt Prosjekt <span class="arrow">→</span>
+    </a>
+  </section>
 
-   <!-- om oss knapp knapp -->
+  <!-- om oss knapp -->
   <section class="project-cta">
-  <h2>Vil du lære mer om oss?</h2>
-  <a href="side2.html" class="project-btn">
-    om oss <span class="arrow">→</span>
-  </a>
-</section>
+    <h2>Vil du lære mer om oss?</h2>
+    <a href="side3.html" class="project-btn">
+      Om oss <span class="arrow">→</span>
+    </a>
+  </section>
 
   <!-- Footer nederst på siden -->
   <footer class="footer" id="contact">
