@@ -281,7 +281,7 @@
       <div class="team-card">
         <img src="images/person1.jpg" alt="Profilbilde person 1" class="profile-image"
              onerror="this.outerHTML='<div class=&quot;profile-image placeholder&quot;>Bilde 1</div>'">
-        <div class="team-name">Navn Etternavn</div>
+        <div class="team-name">Haakon Møgster</div>
         <div class="team-role">Prosjektleder</div>
         <div class="team-desc">
           Har ansvar for fremdrift, koordinering og overordnet struktur i prosjektet.
