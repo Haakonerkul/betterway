@@ -226,6 +226,40 @@
       font-weight: bold;
     }
 
+    /* Egen boks til Ideen vår */
+    .idea-box {
+      display: flex;
+      gap: 30px;
+      align-items: stretch;
+      background: #f4f8f8;
+      border-radius: 16px;
+      padding: 25px;
+      margin-top: 25px;
+    }
+
+    .idea-text {
+      flex: 1.4;
+    }
+
+    .idea-image {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .idea-image img {
+      width: 100%;
+      max-width: 420px;
+      border-radius: 12px;
+      display: block;
+    }
+
+    .idea-image .placeholder {
+      width: 100%;
+      min-height: 260px;
+    }
+
     ul {
       padding-left: 20px;
     }
@@ -288,6 +322,12 @@
       border-top: 1px solid rgba(255,255,255,0.3);
       font-size: 14px;
       opacity: 0.9;
+    }
+
+    @media (max-width: 900px) {
+      .idea-box {
+        flex-direction: column;
+      }
     }
 
     @media (max-width: 700px) {
@@ -364,16 +404,18 @@
         BetterWay er et studentprosjekt som tar utgangspunkt i utfordringer knyttet til
         busskapasitet i Trondheim. Målet er å gjøre kollektivtransport mer forutsigbar,
         tilgjengelig og brukervennlig for flere grupper i samfunnet.
-
+      </p>
+      <p>
         Dette prosjektet tar utgangspunkt i de utfordringene kapasitetsproblemer i kollektivtransporten skaper for forutsigbarhet og tilgjengelighet. Fulle busser er ikke bare et spørsmål om komfort, men utgjør en vesentlig barriere for sårbare grupper, inkludert rullestolbrukere, synshemmede og personer med sosial angst. For sistnevnte gruppe kan trengsel og manglende oversikt føre til unngåelsesatferd og redusert mobilitet.
-
-        Selv om det eksisterer løsninger for kapasitetsvarsling basert på sanntidsdata og historikk (f.eks. hos Agder Kollektivtrafikk), viser erfaring at disse systemene kan være teknisk sårbare og tidvis vanskelige å tolke for sluttbrukeren.
-
+      </p>
+      <p>
+        Selv om det eksisterer løsninger for kapasitetsvarsling basert på sanntidsdata og historikk, viser erfaring at disse systemene kan være teknisk sårbare og tidvis vanskelige å tolke for sluttbrukeren.
+      </p>
+      <p>
         Prosjektets formål er derfor å utforske hvordan informasjon om bussens fyllingsgrad kan presenteres i en reiseapp på en måte som er både teknisk robust og brukervennlig. Ved å gi brukerne bedre beslutningsgrunnlag før reisen starter, er målet å øke den opplevde tryggheten og sikre et mer inkluderende kollektivtilbud.
       </p>
       <p>
-        Løsningen bygger på en digital tvilling som visualiserer kapasitetsnivåer på
-        bussruter og gir brukeren et bedre grunnlag for å planlegge reisen sin.
+        Løsningen bygger på en digital tvilling som visualiserer kapasitetsnivåer på bussruter og gir brukeren et bedre grunnlag for å planlegge reisen sin.
       </p>
 
       <div class="media-grid">
@@ -381,7 +423,7 @@
           <img src="images/ChatGPT Image 20. apr. 2026, 10_49_34.png" alt="QGIS modell">
         </div>
         <div class="media-card">
-           <img src="images/ChatGPT Image 20. apr. 2026, 11_10_37.png" alt="QGIS modell">
+          <img src="images/ChatGPT Image 20. apr. 2026, 11_10_37.png" alt="QGIS modell">
         </div>
       </div>
     </section>
@@ -392,21 +434,33 @@
         Ideen bak BetterWay er å utvikle en løsning som viser hvor fullt det er på bussen
         til enhver tid. På denne måten kan brukeren lettere velge når det er best å reise.
       </p>
-      
+
       <p>
         Dette er særlig nyttig for studenter, eldre og personer som opplever rushtid som
         utfordrende, for eksempel på grunn av sosial angst, redusert mobilitet eller behov
         for bedre tilgjengelighet.
       </p>
-      <p>
-        For å estimere hvor mange passasjerer som befinner seg på bussen, benyttes automatiske passasjertellere (APC – Automatic Passenger Counting). Disse systemene er installert ved bussdørene og registrerer hvor mange som går av og på ved hjelp av sensorteknologi, som for eksempel infrarøde sensorer eller kamera med bildeanalyse. Sensorene registrerer bevegelse gjennom dørene og beregner kontinuerlig antall passasjerer om bord basert på differansen mellom påstigende og avstigende. Dataene lagres og kan kobles til tidspunkt, holdeplass og rute, noe som gir både sanntidsinformasjon og historiske datasett. I Trondheim brukes slike data av kollektivselskapet til analyse av trafikkmønstre og kapasitetsutnyttelse. I dette prosjektet benyttes denne typen data som grunnlag for den digitale tvillingen, hvor passasjerantall estimeres og visualiseres for å gi brukeren bedre beslutningsgrunnlag ved valg av buss og avgang.
-      </p>
+
+      <div class="idea-box">
+        <div class="idea-text">
+          <p>
+            For å estimere hvor mange passasjerer som befinner seg på bussen, benyttes automatiske passasjertellere (APC – Automatic Passenger Counting). Disse systemene er installert ved bussdørene og registrerer hvor mange som går av og på ved hjelp av sensorteknologi, som for eksempel infrarøde sensorer eller kamera med bildeanalyse.
+          </p>
+          <p>
+            Sensorene registrerer bevegelse gjennom dørene og beregner kontinuerlig antall passasjerer om bord basert på differansen mellom påstigende og avstigende. Dataene lagres og kan kobles til tidspunkt, holdeplass og rute, noe som gir både sanntidsinformasjon og historiske datasett.
+          </p>
+          <p>
+            I Trondheim brukes slike data av kollektivselskapet til analyse av trafikkmønstre og kapasitetsutnyttelse. I dette prosjektet benyttes denne typen data som grunnlag for den digitale tvillingen, hvor passasjerantall estimeres og visualiseres for å gi brukeren bedre beslutningsgrunnlag ved valg av buss og avgang.
+          </p>
+        </div>
+
+        <div class="idea-image">
+          <img src="images/ide-bilde.jpg" alt="Illustrasjon av ideen"
+               onerror="this.outerHTML='<div class=&quot;placeholder&quot;>Legg inn bilde: images/ide-bilde.jpg</div>'">
+        </div>
+      </div>
 
       <div class="media-grid">
-        <div class="media-card">
-          <img src="images/ide-bilde.jpg" alt="Illustrasjon av ideen" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>Legg inn bilde: images/ide-bilde.jpg</div>'">
-        </div>
-        
         <div class="media-card">
           <div class="placeholder">Plass til video om ideen vår</div>
         </div>
