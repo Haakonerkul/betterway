@@ -250,6 +250,23 @@
       line-height: 1;
     }
 
+        /* VIDEO */
+    .video-section {
+      width: 100%;
+      padding: 40px 20px;
+      background: #f8f9fa;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .hero-video {
+      width: 100%;
+      max-width: 1000px;
+      border-radius: 16px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+      display: block;
+    }
+
     /* FOOTER */
     .footer {
       background: #0f766e;
@@ -457,7 +474,15 @@
 
     <div class="hero-right"></div>
   </section>
-
+  
+  <!-- VIDEO -->
+  <section class="video-section">
+    <video class="hero-video" controls autoplay muted loop playsinline>
+      <source src="images/betterway.mp4" type="video/mp4">
+      Nettleseren din støtter ikke video.
+    </video>
+  </section>
+  
   <!-- prosjekt knapp -->
   <section class="project-cta">
     <h2>Vil du lære mer om vårt prosjekt?</h2>
