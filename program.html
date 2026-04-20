@@ -83,44 +83,55 @@
     }
 
     /* QGIS VIDEO */
-        .top-video {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  background: #f8f9fa;
-}
-.video-title {
-  text-align: center;
-  color: #0f766e;
-  font-size: 42px;
-  margin: 30px 0 20px;
-}
-.video-container {
-  position: relative;
-  max-width: 900px; /* styrer bredden */
-  width: 100%;
-}
-
-.video-container video {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 12px;
-}
-
-/* Tekst på video */
-.video-text {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  color: white;
-  font-size: 22px;
-  font-weight: bold;
-  z-index: 2;
-  text-shadow: 0 4px 15px rgba(0,0,0,0.7);
-}
-
-
+            .top-video {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      background: #f8f9fa;
+    }
+    .video-title {
+      text-align: center;
+      color: #0f766e;
+      font-size: 42px;
+      margin: 30px 0 20px;
+    }
+    .video-container {
+      position: relative;
+      max-width: 900px; /* styrer bredden */
+      width: 100%;
+    }
+    
+    .video-container video {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+    }
+    
+    /* Tekst på video */
+    .video-text {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      z-index: 2;
+      text-shadow: 0 4px 15px rgba(0,0,0,0.7);
+    }
+    
+    .video-description {
+      max-width: 900px;
+      margin: 20px auto 10px;
+      padding: 18px 22px;
+      font-size: 18px;
+      line-height: 1.6;
+      text-align: center;
+      color: #333;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    }
     /* SIDEMENY */
     .sidebar {
       position: fixed;
@@ -398,7 +409,11 @@
     </div>
   </div>
   </section>
-
+  
+<p class="video-description">
+  Denne simuleringen viser bussruten gjennom Trondheim og gir en visuell oversikt over hvordan bussen beveger seg mellom stoppene i sanntid.
+</p>
+  
   <main class="page">
     <h1>Oversikt</h1>
     <p class="intro">
