@@ -84,27 +84,52 @@
 
     /* QGIS VIDEO */
         .top-video {
-      position: relative;
-      width: 100%;
-      height: 400px;
-      overflow: hidden;
-    }
-    
-    .top-video video {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-    
-    .video-text {
-      position: absolute;
-      bottom: 30px;
-      left: 40px;
-      color: white;
-      font-size: 28px;
-      font-weight: bold;
-      text-shadow: 0 4px 15px rgba(0,0,0,0.7);
-    }
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: #f8f9fa;
+}
+
+.video-container {
+  position: relative;
+  max-width: 900px; /* styrer bredden */
+  width: 100%;
+}
+
+.video-container video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
+/* Tekst på video */
+.video-text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  z-index: 2;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.7);
+}
+
+/* Mørke kanter (gradient) */
+.video-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.5),
+    rgba(0,0,0,0) 20%,
+    rgba(0,0,0,0) 80%,
+    rgba(0,0,0,0.5)
+  );
+  pointer-events: none;
+}
     
     /* SIDEMENY */
     .sidebar {
@@ -371,14 +396,16 @@
   
   <!-- QGIS VIDEO -->
   <section class="top-video">
-  
+
+  <div class="video-container">
     <video autoplay muted loop playsinline>
       <source src="images/qgisvideo.mp4" type="video/mp4">
     </video>
-  
+
     <div class="video-text">
       Utforsk bussruten i Trondheim i sanntid
     </div>
+  </div>
   </section>
 
   <main class="page">
