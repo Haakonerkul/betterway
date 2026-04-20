@@ -59,6 +59,39 @@
       background: white;
       padding: 4px;
     }
+    .clickable-video {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.video-text {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  z-index: 2;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.6);
+}
+
+/* mørk overlay for bedre lesbar tekst */
+.clickable-video::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  border-radius: 16px;
+}
+
+/* hover effekt 🔥 */
+.clickable-video:hover {
+  transform: scale(1.02);
+  transition: 0.2s ease;
+}
 
     .brand-name {
       margin: 0;
