@@ -230,6 +230,66 @@
       padding-left: 20px;
     }
 
+    /* Footer */
+    .footer {
+      background: #0f766e;
+      color: white;
+      padding: 50px 20px 20px;
+      margin-top: 60px;
+    }
+
+    .footer-content {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .footer-section h3,
+    .footer-section h4 {
+      margin-bottom: 15px;
+    }
+
+    .footer-section p {
+      margin: 5px 0;
+    }
+
+    .footer-section a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      margin-bottom: 8px;
+      transition: 0.2s;
+    }
+
+    .footer-section a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-logo {
+      width: 100px;
+      margin-top: 10px;
+      background: white;
+      padding: 6px;
+      border-radius: 8px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255,255,255,0.3);
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
     @media (max-width: 700px) {
       .topbar {
         padding: 12px 14px;
@@ -255,12 +315,12 @@
   <!-- Sidepanel -->
   <div id="sidebar" class="sidebar">
     <h3>Meny</h3>
-    <a href="#" onclick="showTab('prosjekt'); closeMenu();">Om prosjektet</a>
-    <a href="#" onclick="showTab('ideen'); closeMenu();">Ideen vår</a>
-    <a href="#" onclick="showTab('metode'); closeMenu();">Metode</a>
-    <a href="#" onclick="showTab('utstyr'); closeMenu();">Utstyr vi bruker</a>
-    <a href="#" onclick="showTab('utvikling'); closeMenu();">Videre utvikling</a>
-    <a href="#" onclick="showTab('erfaring'); closeMenu();">Erfaring og lærdom</a>
+    <a href="#" onclick="showTab('prosjekt'); closeMenu(); return false;">Om prosjektet</a>
+    <a href="#" onclick="showTab('ideen'); closeMenu(); return false;">Ideen vår</a>
+    <a href="#" onclick="showTab('metode'); closeMenu(); return false;">Metode</a>
+    <a href="#" onclick="showTab('utstyr'); closeMenu(); return false;">Utstyr vi bruker</a>
+    <a href="#" onclick="showTab('utvikling'); closeMenu(); return false;">Videre utvikling</a>
+    <a href="#" onclick="showTab('erfaring'); closeMenu(); return false;">Erfaring og lærdom</a>
   </div>
 
   <div id="overlay" class="overlay" onclick="closeMenu()"></div>
@@ -304,12 +364,6 @@
         BetterWay er et studentprosjekt som tar utgangspunkt i utfordringer knyttet til
         busskapasitet i Trondheim. Målet er å gjøre kollektivtransport mer forutsigbar,
         tilgjengelig og brukervennlig for flere grupper i samfunnet.
-        
-        Dette prosjektet tar utgangspunkt i de utfordringene kapasitetsproblemer i kollektivtransporten skaper for forutsigbarhet og tilgjengelighet. Fulle busser er ikke bare et spørsmål om komfort, men utgjør en vesentlig barriere for sårbare grupper, inkludert rullestolbrukere, synshemmede og personer med sosial angst. For sistnevnte gruppe kan trengsel og manglende oversikt føre til unngåelsesatferd og redusert mobilitet.
-        
-        Selv om det eksisterer løsninger for kapasitetsvarsling basert på sanntidsdata og historikk (f.eks. hos Agder Kollektivtrafikk), viser erfaring at disse systemene kan være teknisk sårbare og tidvis vanskelige å tolke for sluttbrukeren.
-        
-        Prosjektets formål er derfor å utforske hvordan informasjon om bussens fyllingsgrad kan presenteres i en reiseapp på en måte som er både teknisk robust og brukervennlig. Ved å gi brukerne bedre beslutningsgrunnlag før reisen starter, er målet å øke den opplevde tryggheten og sikre et mer inkluderende kollektivtilbud.
       </p>
       <p>
         Løsningen bygger på en digital tvilling som visualiserer kapasitetsnivåer på
@@ -343,7 +397,7 @@
           <img src="images/ide-bilde.jpg" alt="Illustrasjon av ideen" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>Legg inn bilde: images/ide-bilde.jpg</div>'">
         </div>
         <div class="media-card">
-          <iframe height="220" src="" title="Video om ideen vår"></iframe>
+          <div class="placeholder">Plass til video om ideen vår</div>
         </div>
       </div>
     </section>
@@ -439,6 +493,38 @@
 
   </main>
 
+  <!-- Footer -->
+  <footer class="footer" id="contact">
+    <div class="footer-content">
+
+      <div class="footer-section">
+        <h3>BetterWay</h3>
+        <p>Planlegg din reise enklere.</p>
+        <img src="images/logo.png" alt="BetterWay logo" class="footer-logo">
+      </div>
+
+      <div class="footer-section">
+        <h4>Snarveier</h4>
+        <a href="index.html">Forside</a>
+        <a href="side2.html">Prosjekt</a>
+        <a href="side3.html">Om oss</a>
+        <a href="program.html">Oversikt</a>
+      </div>
+
+      <div class="footer-section">
+        <h4>Kontakt oss</h4>
+        <p>Email: betterway@ntnu.no</p>
+        <p>Telefon: +47 123 45 678</p>
+        <p>Trondheim, Norge</p>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 BetterWay – Studentprosjekt NTNU</p>
+    </div>
+  </footer>
+
   <script>
     function toggleMenu() {
       document.getElementById("sidebar").classList.toggle("open");
@@ -459,14 +545,17 @@
 
       document.getElementById(tabId).classList.add("active");
 
+      const buttonMap = {
+        prosjekt: "Om prosjektet",
+        ideen: "Ideen vår",
+        metode: "Metode",
+        utstyr: "Utstyr vi bruker",
+        utvikling: "Videre utvikling",
+        erfaring: "Erfaring og lærdom"
+      };
+
       buttons.forEach(btn => {
-        if (btn.textContent.trim().toLowerCase().includes(tabId) ||
-            (tabId === 'prosjekt' && btn.textContent.includes('Om prosjektet')) ||
-            (tabId === 'ideen' && btn.textContent.includes('Ideen')) ||
-            (tabId === 'metode' && btn.textContent.includes('Metode')) ||
-            (tabId === 'utstyr' && btn.textContent.includes('Utstyr')) ||
-            (tabId === 'utvikling' && btn.textContent.includes('Videre')) ||
-            (tabId === 'erfaring' && btn.textContent.includes('Erfaring'))) {
+        if (btn.textContent.trim() === buttonMap[tabId]) {
           btn.classList.add("active");
         }
       });
