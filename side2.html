@@ -397,6 +397,38 @@
         font-size: 30px;
       }
     }
+     /* Tekst boks på vider utvikling */
+    .future-box {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  background: #f4f8f8;
+  border-radius: 16px;
+  padding: 25px;
+  margin-top: 30px;
+}
+
+.future-text {
+  flex: 1.4;
+}
+
+.future-image {
+  flex: 1;
+}
+
+.future-image img {
+  width: 100%;
+  max-width: 380px;
+  border-radius: 12px;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .future-box {
+    flex-direction: column;
+  }
+}
+    
   </style>
 </head>
 <body>
@@ -659,25 +691,49 @@
     </section>
 
     <section id="utvikling" class="tab-content">
-      <h2>Videre utvikling</h2>
+  <h2>Videre utvikling</h2>
+
+  <p>
+    I videre arbeid ønsker vi å koble løsningen til reelle datastrømmer fra kollektivtransporten,
+    slik at brukerne får sanntidsinformasjon om kapasitet og belastning på bussene.
+  </p>
+
+  <p>
+    Nettsiden kan også videreutvikles med interaktive kart, varslinger og bedre universell
+    utforming. På sikt kan løsningen bli et nyttig verktøy for både passasjerer og kollektivselskap.
+  </p>
+
+  <div class="media-grid">
+    <div class="media-card">
+      <img src="images/qgistelefon.jpg" alt="QGIS på telefon">
+    </div>
+    <div class="media-card">
+      <img src="images/atbtelefon.jpg" alt="ATB på telefon">
+    </div>
+  </div>
+
+  <div class="future-box">
+    <div class="future-text">
       <p>
-        I videre arbeid ønsker vi å koble løsningen til reelle datastrømmer fra kollektivtransporten,
-        slik at brukerne får sanntidsinformasjon om kapasitet og belastning på bussene.
-      </p>
-      <p>
-        Nettsiden kan også videreutvikles med interaktive kart, varslinger og bedre universell
-        utforming. På sikt kan løsningen bli et nyttig verktøy for både passasjerer og kollektivselskap.
+        Videre utvikling kan innebære at bussene 3D-skannes. Med denne informasjonen kan
+        BetterWay vite hvor mange seter det er i en buss. Ved hjelp av live sensorovervåkning
+        kan løsningen også vise hvor mange seter som er ledige, og hvor i bussen de ledige
+        setene befinner seg.
       </p>
 
-      <div class="media-grid">
-        <div class="media-card">
-          <img src="images/qgistelefon.jpg" alt="QGIS på telefon">
-        </div>
-        <div class="media-card">
-          <img src="images/atbtelefon.jpg" alt="QGIS på telefon">
-        </div>
-      </div>
-    </section>
+      <p>
+        Dette kan fungere på en lignende måte som når man velger sete på tog eller fly.
+        Brukeren kan dermed få bedre oversikt før reisen starter, og lettere velge en buss
+        eller plassering som oppleves trygg og tilgjengelig.
+      </p>
+    </div>
+
+    <div class="future-image">
+      <img src="images/videre-utvikling.jpg" alt="Illustrasjon av videre utvikling"
+           onerror="this.outerHTML='<div class=&quot;placeholder&quot;>Legg inn bilde: images/videre-utvikling.jpg</div>'">
+    </div>
+  </div>
+</section>
 
     <section id="erfaring" class="tab-content">
       <h2>Erfaring og lærdom</h2>
