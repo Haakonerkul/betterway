@@ -481,6 +481,12 @@
         justify-content: center;
       }
     }
+    .full-video-wrapper iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+}
   </style>
 </head>
 <body>
@@ -554,8 +560,8 @@
   <!-- FULL VIDEO -->
 <section class="full-video-section">
   <div class="full-video-wrapper">
-   <iframe 
-  src="https://www.youtube.com/watch?v=0gdtZhhDXLM"
+ <iframe 
+  src="https://www.youtube.com/embed/0gdtZhhDXLM"
   frameborder="0"
   allow="autoplay; encrypted-media"
   allowfullscreen>
